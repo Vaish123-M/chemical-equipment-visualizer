@@ -1,6 +1,21 @@
 # Chemical Equipment Parameter Visualizer
 
-Hybrid Web + Desktop application for visualizing and analyzing chemical equipment data with a modern, fully responsive interface.
+A hybrid **Web + Desktop application** for uploading, analyzing, and visualizing chemical equipment data from CSV files.
+
+## Quick Overview
+- Backend: Django + Django REST Framework (shared API)
+- Web App: React + Chart.js
+- Desktop App: PyQt5 + Matplotlib
+- Data Handling: Pandas
+- Database: SQLite (stores last 5 uploads)
+- Features:
+  - CSV upload & analytics
+  - Summary statistics & charts
+  - History of last 5 datasets
+  - PDF report generation
+  - Token-based authentication
+
+👉 For a full demo, see the video link in the submission.
 
 ---
 
