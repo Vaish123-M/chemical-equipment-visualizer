@@ -1,0 +1,8 @@
+django>=4.2
+djangorestframework>=3.14
+django-cors-headers>=4.3
+pandas>=2.1
+reportlab>=4.0
+requests>=2.31
+PyQt5>=5.15
+matplotlib>=3.8
