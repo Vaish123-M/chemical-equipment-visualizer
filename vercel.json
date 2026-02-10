@@ -1,0 +1,7 @@
+{
+  "buildCommand": "cd web-frontend && npm install && npm run build",
+  "outputDirectory": "web-frontend/dist",
+  "env": {
+    "VITE_API_URL": "@react_api_url"
+  }
+}
