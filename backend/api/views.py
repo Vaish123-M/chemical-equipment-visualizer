@@ -16,6 +16,12 @@ from .serializers import EquipmentDatasetSerializer
 REQUIRED_COLUMNS = {"flowrate", "pressure", "temperature", "type"}
 
 
+def _normalize_columns(dataframe):
+    """Normalize dataframe column names to lowercase."""
+    dataframe.columns = dataframe.columns.str.lower()
+    return dataframe
+
+
 def _cleanup_old_datasets():
     excess = EquipmentDataset.objects.order_by("-upload_time")[5:]
     for item in excess:
@@ -86,6 +92,9 @@ class UploadView(APIView):
             csv_file.seek(0)
         except Exception as exc:
             return Response({"detail": f"Unable to parse CSV: {exc}"}, status=status.HTTP_400_BAD_REQUEST)
+
+        # Normalize column names to lowercase for compatibility
+        dataframe = _normalize_columns(dataframe)
 
         missing = REQUIRED_COLUMNS.difference(dataframe.columns)
         if missing:

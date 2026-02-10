@@ -1,0 +1,16 @@
+flowrate,pressure,temperature,type
+45.3,120.5,85.2,Pump
+52.1,135.8,92.1,Valve
+48.7,128.3,88.4,Pump
+61.2,145.2,95.6,Valve
+39.8,112.1,80.9,Compressor
+55.4,138.9,91.2,Pump
+43.2,125.6,87.1,Valve
+58.9,142.3,94.8,Compressor
+46.5,130.2,89.3,Pump
+51.8,132.7,90.5,Valve
+44.1,122.8,86.7,Compressor
+59.3,140.1,93.2,Pump
+50.2,131.4,91.8,Valve
+54.7,137.6,89.9,Pump
+47.9,126.9,88.6,Compressor

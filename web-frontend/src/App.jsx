@@ -48,9 +48,8 @@ export default function App() {
       .fetchHistory()
       .then((data) => {
         setHistory(data);
-        if (data.length) {
-          setSummary(data[0]);
-        }
+        // Don't automatically set summary - only show data after upload
+        setSummary(null);
         setStatus("Ready");
       })
       .catch((error) => {
@@ -96,6 +95,13 @@ export default function App() {
 
   return (
     <div className="app">
+      <section className="landing">
+        <h1 className="landing-title">Parameter Visualization</h1>
+        <p className="landing-description">
+          Chemical Equipment Parameter Visualizer is a hybrid web and desktop application that enables users to upload chemical equipment data in CSV format and instantly view key analytics. The platform provides summary statistics, interactive charts, and dataset history through a shared backend, making equipment monitoring and analysis simple and efficient.
+        </p>
+      </section>
+
       <header className="hero">
         <div>
           <p className="eyebrow">Chemical Equipment</p>
@@ -104,7 +110,7 @@ export default function App() {
         </div>
         <div className="panel">
           <label className="field">
-            Backend URL
+            <span>Backend URL</span>
             <input
               value={apiBaseUrl}
               onChange={(event) => setApiBaseUrl(event.target.value)}
@@ -112,7 +118,7 @@ export default function App() {
             />
           </label>
           <label className="field">
-            API Token
+            <span>API Token</span>
             <input
               value={token}
               onChange={(event) => setToken(event.target.value)}
@@ -121,7 +127,7 @@ export default function App() {
             />
           </label>
           <label className="file-field">
-            CSV Dataset
+            <span>CSV Dataset</span>
             <input
               type="file"
               accept=".csv"
