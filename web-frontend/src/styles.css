@@ -111,7 +111,7 @@ body {
 
 .features-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
   gap: clamp(20px, 3vw, 28px);
 }
 
@@ -126,6 +126,8 @@ body {
   position: relative;
   overflow: hidden;
   text-align: center;
+  min-width: 0;
+  word-wrap: break-word;
 }
 
 .feature-card::before {
@@ -198,7 +200,8 @@ body {
   gap: clamp(16px, 2vw, 20px);
   animation: slideInUp 0.6s var(--transition);
   width: 100%;
-  max-width: 600px;
+  max-width: min(600px, 90vw);
+  margin: 0 auto;
 }
 
 @keyframes slideInUp {
@@ -362,7 +365,7 @@ body {
 .cards {
   display: grid;
   gap: clamp(14px, 2vw, 18px);
-  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(130px, 100%), 1fr));
 }
 
 .card {
@@ -375,6 +378,7 @@ body {
   transition: all var(--transition);
   position: relative;
   overflow: hidden;
+  word-wrap: break-word;
 }
 
 .card::before {
@@ -560,6 +564,45 @@ body {
 }
 
 /* ============ RESPONSIVE DESIGN ============ */
+
+/* Extra Small Devices: Portrait phones (< 375px) */
+@media (max-width: 374px) {
+  .app {
+    padding: 12px;
+  }
+
+  .landing {
+    padding: 24px 14px;
+    margin-bottom: 20px;
+  }
+
+  .landing-title {
+    font-size: 1.5rem;
+  }
+
+  .landing-description {
+    font-size: 0.9rem;
+  }
+
+  .features-grid {
+    gap: 14px;
+  }
+
+  .feature-card {
+    padding: 16px;
+  }
+
+  .panel {
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .primary {
+    padding: 12px 16px;
+  }
+}
+
+/* Small Devices: Mobile phones (375px - 480px) */
 @media (max-width: 480px) {
   .app {
     padding: 14px;
@@ -646,10 +689,15 @@ body {
   }
 
   .grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
+  }
+
+  .chart-card {
+    grid-column: 1 / -1;
   }
 }
 
+/* Medium Devices: Tablets and small laptops (769px - 1024px) */
 @media (min-width: 769px) and (max-width: 1024px) {
   .features-grid {
     grid-template-columns: repeat(3, 1fr);
@@ -662,8 +710,13 @@ body {
   .grid {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .cards {
+    grid-column: 1 / -1;
+  }
 }
 
+/* Large Devices: Desktops (1025px - 1440px) */
 @media (min-width: 1025px) {
   .grid {
     grid-template-columns: repeat(3, 1fr);
@@ -671,6 +724,18 @@ body {
 
   .cards {
     grid-template-columns: repeat(4, 1fr);
+    grid-column: 1 / -1;
+  }
+}
+
+/* Extra Large Devices: Large desktops (> 1440px) */
+@media (min-width: 1441px) {
+  .app {
+    max-width: 1600px;
+  }
+
+  .features-grid {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
