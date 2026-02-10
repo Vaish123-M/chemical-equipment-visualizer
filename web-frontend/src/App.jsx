@@ -102,12 +102,60 @@ export default function App() {
         </p>
       </section>
 
-      <header className="hero">
-        <div>
-          <p className="eyebrow">Chemical Equipment</p>
-          <h1>Parameter Visualizer</h1>
-          <p className="subtitle">Upload CSV datasets and compare key averages instantly.</p>
+      <section className="features">
+        <h2 className="features-title">Key Features</h2>
+        <div className="features-grid">
+          <div className="feature-card">
+            <div className="feature-icon">📤</div>
+            <h3 className="feature-title">CSV Upload</h3>
+            <p className="feature-description">
+              Web and Desktop interfaces allow seamless CSV file uploads to the backend for instant processing.
+            </p>
+          </div>
+          
+          <div className="feature-card">
+            <div className="feature-icon">📊</div>
+            <h3 className="feature-title">Data Summary API</h3>
+            <p className="feature-description">
+              Django REST API returns total count, averages, and equipment type distribution in real-time.
+            </p>
+          </div>
+          
+          <div className="feature-card">
+            <div className="feature-icon">📈</div>
+            <h3 className="feature-title">Visualization</h3>
+            <p className="feature-description">
+              Beautiful charts using Chart.js for web and Matplotlib for desktop applications.
+            </p>
+          </div>
+          
+          <div className="feature-card">
+            <div className="feature-icon">🗂️</div>
+            <h3 className="feature-title">History Management</h3>
+            <p className="feature-description">
+              Stores last 5 uploaded datasets with complete summaries for easy comparison and review.
+            </p>
+          </div>
+          
+          <div className="feature-card">
+            <div className="feature-icon">📄</div>
+            <h3 className="feature-title">PDF Reports</h3>
+            <p className="feature-description">
+              Generate comprehensive PDF reports with statistics and visualizations for sharing.
+            </p>
+          </div>
+          
+          <div className="feature-card">
+            <div className="feature-icon">🔐</div>
+            <h3 className="feature-title">Authentication</h3>
+            <p className="feature-description">
+              Token-based authentication ensures secure access to your equipment data and APIs.
+            </p>
+          </div>
         </div>
+      </section>
+
+      <header className="hero">
         <div className="panel">
           <label className="field">
             <span>Backend URL</span>

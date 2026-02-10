@@ -92,47 +92,98 @@ body {
   font-weight: 400;
 }
 
-/* ============ HERO SECTION ============ */
-.hero {
-  display: grid;
-  gap: clamp(16px, 4vw, 28px);
-  grid-template-columns: 1fr;
-  align-items: start;
-  margin-bottom: clamp(28px, 5vw, 40px);
+/* ============ FEATURES SECTION ============ */
+.features {
+  margin-bottom: clamp(40px, 8vw, 80px);
+  animation: fadeInUp 0.9s var(--transition) 0.2s backwards;
 }
 
-.hero > div:first-child {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.eyebrow {
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  font-size: clamp(0.6rem, 1.5vw, 0.75rem);
-  margin: 0 0 12px;
-  color: var(--primary);
+.features-title {
+  font-size: clamp(2rem, 4vw, 2.8rem);
   font-weight: 700;
-}
-
-h1 {
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  margin: 0 0 14px;
-  font-weight: 700;
+  text-align: center;
+  margin: 0 0 clamp(30px, 6vw, 50px);
   background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  line-height: 1.2;
 }
 
-.subtitle {
-  margin: 0;
-  color: #64748b;
-  max-width: 480px;
-  font-size: clamp(0.95rem, 2vw, 1.1rem);
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: clamp(20px, 3vw, 28px);
+}
+
+.feature-card {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fbff 100%);
+  backdrop-filter: blur(12px);
+  padding: clamp(24px, 4vw, 32px);
+  border-radius: 18px;
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(0, 82, 204, 0.1);
+  transition: all var(--transition);
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+.feature-card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(0, 184, 148, 0.08) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+
+.feature-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--secondary);
+}
+
+.feature-card:hover::before {
+  opacity: 1;
+}
+
+.feature-icon {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  margin-bottom: clamp(12px, 2vw, 16px);
+  display: inline-block;
+  transition: transform var(--transition);
+}
+
+.feature-card:hover .feature-icon {
+  transform: scale(1.15) rotate(5deg);
+}
+
+.feature-title {
+  font-size: clamp(1.1rem, 2vw, 1.3rem);
+  font-weight: 700;
+  margin: 0 0 clamp(10px, 2vw, 12px);
+  background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.feature-description {
+  font-size: clamp(0.9rem, 1.5vw, 1rem);
   line-height: 1.6;
+  color: #64748b;
+  margin: 0;
+}
+
+/* ============ HERO SECTION ============ */
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: clamp(28px, 5vw, 40px);
 }
 
 /* ============ PANEL / FORM ============ */
@@ -146,6 +197,8 @@ h1 {
   display: grid;
   gap: clamp(16px, 2vw, 20px);
   animation: slideInUp 0.6s var(--transition);
+  width: 100%;
+  max-width: 600px;
 }
 
 @keyframes slideInUp {
@@ -526,9 +579,26 @@ h1 {
     line-height: 1.6;
   }
 
-  .hero {
+  .features {
+    margin-bottom: 30px;
+  }
+
+  .features-title {
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+  }
+
+  .features-grid {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 16px;
+  }
+
+  .feature-card {
+    padding: 20px;
+  }
+
+  .feature-icon {
+    font-size: 2.2rem;
   }
 
   .panel {
@@ -567,6 +637,10 @@ h1 {
 }
 
 @media (min-width: 481px) and (max-width: 768px) {
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .cards {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -574,16 +648,11 @@ h1 {
   .grid {
     grid-template-columns: repeat(2, 1fr);
   }
-
-  .hero {
-    gap: 20px;
-  }
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
-  .hero {
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
+  .features-grid {
+    grid-template-columns: repeat(3, 1fr);
   }
 
   .cards {
@@ -596,11 +665,6 @@ h1 {
 }
 
 @media (min-width: 1025px) {
-  .hero {
-    grid-template-columns: 1.2fr 1fr;
-    gap: 32px;
-  }
-
   .grid {
     grid-template-columns: repeat(3, 1fr);
   }
